@@ -77,7 +77,9 @@ namespace Example
 }
 ```
 
-is dumped as
+is dumped by calling `DependencyDumper c:\projects\dependencyDumper\source\Example\bin\debug Example.dll Example.* 3 "" c:\temp\example.tgf` (at least on my machine ;-) 
+
+after some auto-layouting in yEd (hierarchical, left-to-right, topological (max rank)) and setting box width to 200, it looks like
 
 ![alt text](https://raw.github.com/ursenzler/DependencyDumper/master/source/Example/example.png "example")
 
