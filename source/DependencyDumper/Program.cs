@@ -46,7 +46,7 @@ namespace DependecyDumper
             string assemblyName = args[1];
             Regex typePattern = new Regex(args[2]);
             int minDepth = int.Parse(args[3]);
-            string[] roots = args[4].Split(',');
+            string[] roots = string.IsNullOrEmpty(args[4]) ? new string[] { } : args[4].Split(',');
             string outputPath = args[5];
 
             RegisterAssemblyResolveHandler(assemblyFolder);
@@ -59,7 +59,7 @@ namespace DependecyDumper
             Console.WriteLine("using assemblies from folder " + assemblyFolder);
             Console.WriteLine("using only types matching " + typePattern);
             Console.WriteLine("dumping only dependency chains longer or equal to " + minDepth);
-            Console.WriteLine("treating the following classes as roots (even if they are used by other classes): " + roots.Aggregate((a, b) => a + ", " + b));
+            Console.WriteLine("treating the following classes as roots (even if they are used by other classes): " + string.Join(", ", roots));
             Console.WriteLine("writing output to (should be a .tgf file)" + outputPath);
             Console.WriteLine();
 
